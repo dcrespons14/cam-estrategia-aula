@@ -12,7 +12,7 @@ import urllib.request
 import zipfile
 
 
-def besbloquear_cuaderno():
+def desbloquear_cuaderno():
     endpoint = "https://cam-estrategia-aula.david-simracing14.chatgpt.site/api/materials"
     password = getpass.getpass("Contraseña del curso: ")
     request = urllib.request.Request(
@@ -59,4 +59,4 @@ def besbloquear_cuaderno():
 
 
 if __name__ == "__main__":
-    besbloquear_cuaderno()
+    desbloquear_cuaderno()
