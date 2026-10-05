@@ -17,7 +17,7 @@ def desbloquear_cuaderno():
     password = getpass.getpass("Contraseña del curso: ")
     request = urllib.request.Request(
         endpoint, data=json.dumps({"password": password}).encode("utf-8"),
-        headers={"Content-Type": "application/json"}, method="POST",
+        headers={"Content-Type": "application/json", "User-Agent": "cam-estrategia/0.1"}, method="POST",
     )
     del password
     try:
