@@ -1,1 +1,1 @@
-from cam_estrategia import besbloquear_cuaderno as desbloquear_cuaderno
+from cam_estrategia import desbloquear_cuaderno as desbloquear_cuaderno
