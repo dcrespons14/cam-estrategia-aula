@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cam-aula"
+version = "0.1.0"
+description = "Asistente de acceso al curso de estrategia"
+requires-python = ">=3.10"
+
+[tool.setuptools]
+py-modules = ["cam_aula"]
