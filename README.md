@@ -5,6 +5,7 @@ Notebooks de entrada al curso de estrategia.
 - [Aula del curso](https://cam-estrategia-aula.david-simracing14.chatgpt.site)
 - [Carrera en Colab](https://colab.research.google.com/github/dcrespons14/cam-estrategia-aula/blob/main/race_example.ipynb)
 - [Monte Carlo en Colab](https://colab.research.google.com/github/dcrespons14/cam-estrategia-aula/blob/main/monte_carlo_example.ipynb)
+- [Solución del ejercicio de Monte Carlo en Colab](https://colab.research.google.com/github/dcrespons14/cam-estrategia-aula/blob/main/monte_carlo_example_solution.ipynb)
 
 Ejecuta la primera celda e introduce la contraseña facilitada en el curso. El código se prepara automáticamente en tu sesión de Colab. Puedes leer y editar los archivos Python desde **Archivos → curso-motorsport → src → race_models**.
 
