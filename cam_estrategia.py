@@ -13,7 +13,7 @@ import zipfile
 
 
 def desbloquear_cuaderno():
-    endpoint = "https://cam-estrategia-aula.david-simracing14.chatgpt.site/api/materials"
+    endpoint = "https://cam-estrategia-aula.cam-estrategia.workers.dev/api/materials"
     password = getpass.getpass("Contraseña del curso: ")
     request = urllib.request.Request(
         endpoint, data=json.dumps({"password": password}).encode("utf-8"),
