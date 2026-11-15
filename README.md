@@ -9,7 +9,7 @@ Cuadernos interactivos del curso de estrategia. Ábrelos en Colab:
 | 3.9 - Solución al ejercicio de 3.8 | [Solución del ejercicio de Monte Carlo](https://colab.research.google.com/github/dcrespons14/cam-estrategia-aula/blob/main/monte_carlo_example_solution.ipynb) |
 | 4.3 - Práctica modelos de degradación | [Modelos de degradación](https://colab.research.google.com/github/dcrespons14/cam-estrategia-aula/blob/main/degradation_models.ipynb) |
 | 4.5 - Práctica modelos de adelantamiento | [Modelos de adelantamiento](https://colab.research.google.com/github/dcrespons14/cam-estrategia-aula/blob/main/overtaking_models.ipynb) |
-| 4.6 - Modelo de carrera completo | [Modelo de carrera completo](https://colab.research.google.com/github/dcrespons14/cam-estrategia-aula/blob/main/race_model.ipynb) |
+| 4.6 - Modelo de carrera completo (Parte 1) | [Modelo de carrera completo](https://colab.research.google.com/github/dcrespons14/cam-estrategia-aula/blob/main/race_model.ipynb) |
 | 4.9 - Práctica aprendizaje por refuerzo | [Aprendizaje por refuerzo](https://colab.research.google.com/github/dcrespons14/cam-estrategia-aula/blob/main/reinforcement_learning.ipynb) |
 
 Ejecuta la primera celda e introduce la contraseña facilitada en el curso. El código se
