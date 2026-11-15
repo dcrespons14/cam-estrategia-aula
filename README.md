@@ -4,9 +4,9 @@ Cuadernos interactivos del curso de estrategia. Ábrelos en Colab:
 
 | Clase | Cuaderno |
 |---|---|
-| 3.7 - Caso práctico simulaciones Monte Carlo | [Carrera de ejemplo](https://colab.research.google.com/github/dcrespons14/cam-estrategia-aula/blob/main/race_example.ipynb) |
-| 3.7 - Caso práctico simulaciones Monte Carlo | [Simulaciones Monte Carlo](https://colab.research.google.com/github/dcrespons14/cam-estrategia-aula/blob/main/monte_carlo_example.ipynb) |
-| 3.8 - Solución al ejercicio de 3.7 | [Solución del ejercicio de Monte Carlo](https://colab.research.google.com/github/dcrespons14/cam-estrategia-aula/blob/main/monte_carlo_example_solution.ipynb) |
+| 3.8 - Caso práctico simulaciones Monte Carlo | [Carrera de ejemplo](https://colab.research.google.com/github/dcrespons14/cam-estrategia-aula/blob/main/race_example.ipynb) |
+| 3.8 - Caso práctico simulaciones Monte Carlo | [Simulaciones Monte Carlo](https://colab.research.google.com/github/dcrespons14/cam-estrategia-aula/blob/main/monte_carlo_example.ipynb) |
+| 3.9 - Solución al ejercicio de 3.8 | [Solución del ejercicio de Monte Carlo](https://colab.research.google.com/github/dcrespons14/cam-estrategia-aula/blob/main/monte_carlo_example_solution.ipynb) |
 | 4.3 - Práctica modelos de degradación | [Modelos de degradación](https://colab.research.google.com/github/dcrespons14/cam-estrategia-aula/blob/main/degradation_models.ipynb) |
 | 4.5 - Práctica modelos de adelantamiento | [Modelos de adelantamiento](https://colab.research.google.com/github/dcrespons14/cam-estrategia-aula/blob/main/overtaking_models.ipynb) |
 | 4.6 - Modelo de carrera completo | [Modelo de carrera completo](https://colab.research.google.com/github/dcrespons14/cam-estrategia-aula/blob/main/race_model.ipynb) |
