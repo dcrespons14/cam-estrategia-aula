@@ -1,53 +1,40 @@
 """Public helper imported by the short Colab access cell."""
+import base64
 import getpass
-import hashlib
-import io
-import json
+import os
 from pathlib import Path
 import subprocess
 import sys
-import tempfile
-import urllib.error
-import urllib.request
-import zipfile
 
 
 def desbloquear_cuaderno():
-    endpoint = "https://cam-estrategia-aula.cam-estrategia.workers.dev/api/materials"
-    password = getpass.getpass("Contraseña del curso: ")
-    request = urllib.request.Request(
-        endpoint, data=json.dumps({"password": password}).encode("utf-8"),
-        headers={"Content-Type": "application/json", "User-Agent": "cam-estrategia/0.1"}, method="POST",
-    )
-    del password
-    try:
-        with urllib.request.urlopen(request, timeout=60) as response:
-            archive = response.read(10 * 1024 * 1024 + 1)
-            expected_hash = response.headers.get("X-Course-SHA256")
-    except urllib.error.HTTPError as error:
-        if error.code == 401:
-            raise RuntimeError("Contraseña incorrecta. Vuelve a ejecutar esta celda.") from None
-        if error.code == 429:
-            raise RuntimeError("Demasiados intentos. Espera 15 minutos y vuelve a probar.") from None
-        raise RuntimeError("El acceso al curso no está disponible. Inténtalo más tarde.") from None
-    except (urllib.error.URLError, TimeoutError):
-        raise RuntimeError("No se pudo conectar. Comprueba la conexión y vuelve a ejecutar la celda.") from None
-    finally:
-        request.data = None
-    if len(archive) > 10 * 1024 * 1024 or not expected_hash or hashlib.sha256(archive).hexdigest() != expected_hash:
-        raise RuntimeError("La descarga no es válida. Vuelve a ejecutar la celda.")
     destination = Path.cwd() / "curso-motorsport"
     if destination.exists():
         print("Se conserva tu carpeta curso-motorsport y sus modificaciones.")
     else:
-        with zipfile.ZipFile(io.BytesIO(archive)) as package:
-            for item in package.infolist():
-                target = (Path.cwd() / item.filename).resolve()
-                if not target.is_relative_to(destination.resolve()):
-                    raise RuntimeError("El archivo contiene una ruta no válida.")
-            with tempfile.TemporaryDirectory(dir=Path.cwd()) as temporary:
-                package.extractall(temporary)
-                (Path(temporary) / "curso-motorsport").rename(destination)
+        password = getpass.getpass("Contraseña del curso: ")
+        credentials = base64.b64encode(("alumno:" + password).encode("utf-8")).decode("ascii")
+        del password
+        # La contraseña va en una cabecera pasada por el entorno: no queda en la URL,
+        # en la configuración del repositorio ni en la lista de procesos.
+        environment = dict(os.environ, GIT_TERMINAL_PROMPT="0", GIT_CONFIG_COUNT="2",
+                           GIT_CONFIG_KEY_0="http.extraHeader",
+                           GIT_CONFIG_VALUE_0="Authorization: Basic " + credentials,
+                           GIT_CONFIG_KEY_1="credential.helper", GIT_CONFIG_VALUE_1="")
+        del credentials
+        result = subprocess.run(
+            ["git", "clone", "--quiet", "https://cam-estrategia-aula.cam-estrategia.workers.dev/cam-estrategia.git", str(destination)],
+            env=environment, capture_output=True, text=True,
+        )
+        if result.returncode != 0:
+            message = result.stderr
+            if "429" in message:
+                raise RuntimeError("Demasiados intentos. Espera 15 minutos y vuelve a probar.")
+            if "401" in message or "Authentication failed" in message or "terminal prompts disabled" in message:
+                raise RuntimeError("Contraseña incorrecta. Vuelve a ejecutar esta celda.")
+            if "Could not resolve host" in message or "Failed to connect" in message:
+                raise RuntimeError("No se pudo conectar. Comprueba la conexión y vuelve a ejecutar la celda.")
+            raise RuntimeError("El acceso al curso no está disponible. Inténtalo más tarde.")
     subprocess.run(
         [sys.executable, "-m", "pip", "install", "--quiet", "-e", str(destination)], check=True,
     )
